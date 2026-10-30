@@ -5,8 +5,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-body), Arial, sans-serif;
-  --font-heading: var(--font-editorial), Georgia, serif;
+  --font-sans: var(--font-inter), Arial, sans-serif;
+  --font-heading: var(--font-inter), Arial, sans-serif;
   --color-primary: var(--navy);
   --color-primary-foreground: #fff;
   --color-secondary: #f7f6f2;
@@ -38,15 +38,14 @@
   --cream: #f7f6f2;
   --body: #5b6771;
   --radius: 0.25rem;
-  --serif: var(--font-editorial), Georgia, serif;
-  --sans: var(--font-body), Arial, sans-serif;
+  --typeface: var(--font-inter), Arial, sans-serif;
 }
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
-  font-family: var(--sans);
+  font-family: var(--typeface);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
@@ -93,8 +92,8 @@ img {
   margin-inline: auto;
 }
 .font-heading {
-  font-family: var(--serif);
-  font-weight: 500;
+  font-family: var(--typeface);
+  font-weight: 700;
   letter-spacing: -0.025em;
 }
 .text-balance {
@@ -172,16 +171,16 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--serif);
+  font-family: var(--typeface);
 }
 .brand-wordmark > span:first-child {
-  font-size: 31px;
+  font-size: 26px;
   line-height: 1;
   letter-spacing: 0.13em;
   font-weight: 500;
 }
 .brand-wordmark > span:last-child {
-  font-family: var(--sans);
+  font-family: var(--typeface);
   font-size: 8px;
   letter-spacing: 0.52em;
   padding-left: 4px;
@@ -362,11 +361,11 @@ img {
 }
 .signature-hero h1 {
   margin: 0;
-  font-family: var(--serif);
-  font-size: 104px;
-  font-weight: 400;
+  font-family: var(--typeface);
+  font-size: 79px;
+  font-weight: 700;
   letter-spacing: -0.035em;
-  line-height: 0.94;
+  line-height: 1.14;
 }
 .signature-hero h1 em {
   color: #e1c99a;
@@ -408,7 +407,7 @@ img {
   color: #f3f3eb;
 }
 .hero-side-note > p {
-  font-family: var(--serif);
+  font-family: var(--typeface);
   font-size: 25px;
   margin: 0 0 8px;
 }
@@ -485,13 +484,13 @@ img {
   position: absolute;
   right: 20px;
   top: 15px;
-  font-family: var(--serif);
+  font-family: var(--typeface);
   font-size: 17px;
   color: #c6bca5;
 }
 .focus-bar p {
-  font-family: var(--serif);
-  font-size: 26px;
+  font-family: var(--typeface);
+  font-size: 21px;
   font-weight: 500;
   margin: 0 0 3px;
   line-height: 1.15;
@@ -508,10 +507,10 @@ img {
 .section-heading h2,
 .legacy-cta h2,
 .about-manifesto h2 {
-  font-family: var(--serif);
-  font-size: 59px;
-  line-height: 1.02;
-  font-weight: 400;
+  font-family: var(--typeface);
+  font-size: 45px;
+  line-height: 1.14;
+  font-weight: 700;
   letter-spacing: -0.03em;
   margin: 0;
 }
@@ -565,7 +564,7 @@ img {
   position: absolute;
   right: 0;
   top: -80px;
-  font-family: var(--serif);
+  font-family: var(--typeface);
   font-size: 250px;
   color: #e9e6df45;
   line-height: 1;
@@ -575,7 +574,7 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: var(--serif);
+  font-family: var(--typeface);
   font-style: italic;
   font-size: 23px;
   color: #8c703d;
@@ -632,15 +631,15 @@ img {
   color: #9a7d46;
 }
 .philosophy-item > div > span {
-  font-family: var(--serif);
+  font-family: var(--typeface);
   font-size: 21px;
   color: #b9af99;
 }
 .philosophy-item h3 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 1;
+  font-family: var(--typeface);
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 1.14;
   margin: 26px 0 16px;
 }
 .philosophy-item > p {
@@ -703,10 +702,10 @@ img {
   padding: 27px 24px 23px;
 }
 .feature-card-copy h3 {
-  font-family: var(--serif);
-  font-size: 29px;
-  font-weight: 500;
-  line-height: 1.05;
+  font-family: var(--typeface);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.14;
   letter-spacing: -0.02em;
   margin: 0;
 }
@@ -755,10 +754,10 @@ a:hover .feature-card-copy .card-link svg {
   color: white;
 }
 .education-editorial-copy h2 {
-  font-family: var(--serif);
-  font-size: 71px;
-  line-height: 1;
-  font-weight: 400;
+  font-family: var(--typeface);
+  font-size: 54px;
+  line-height: 1.14;
+  font-weight: 700;
   letter-spacing: -0.035em;
   margin: 0 0 28px;
 }
@@ -805,17 +804,17 @@ a:hover .feature-card-copy .card-link svg {
   transform: rotate(45deg);
 }
 .step-number {
-  font-family: var(--serif);
+  font-family: var(--typeface);
   font-size: 48px;
   color: #a28a5c;
   line-height: 1;
 }
 .process-step h3 {
-  font-family: var(--serif);
-  font-size: 33px;
-  font-weight: 500;
+  font-family: var(--typeface);
+  font-size: 25px;
+  font-weight: 700;
   margin: 22px 0 14px;
-  line-height: 1;
+  line-height: 1.14;
 }
 .process-step p {
   font-size: 12px;
@@ -853,15 +852,15 @@ a:hover .feature-card-copy .card-link svg {
   letter-spacing: 0.12em;
 }
 .resource-editorial > div > span:last-child {
-  font-family: var(--serif);
+  font-family: var(--typeface);
   font-size: 21px;
   color: #b3a991;
 }
 .resource-editorial h3 {
-  font-family: var(--serif);
-  font-size: 34px;
-  font-weight: 500;
-  line-height: 1.08;
+  font-family: var(--typeface);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.14;
   letter-spacing: -0.025em;
   margin: 27px 0 16px;
 }
@@ -894,7 +893,7 @@ a:hover .feature-card-copy .card-link svg {
 .legacy-cta h2 {
   max-width: 750px;
   color: #fff;
-  font-size: 59px;
+  font-size: 45px;
 }
 .legacy-cta p:not(.eyebrow) {
   max-width: 630px;
@@ -905,7 +904,7 @@ a:hover .feature-card-copy .card-link svg {
 }
 .cta-watermark {
   position: absolute;
-  font-family: var(--serif);
+  font-family: var(--typeface);
   font-size: 520px;
   font-weight: 400;
   line-height: 1;
@@ -940,7 +939,7 @@ a:hover .feature-card-copy .card-link svg {
 }
 .footer-grid h2 {
   color: #ccb17a;
-  font-family: var(--sans);
+  font-family: var(--typeface);
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.13em;
@@ -1011,7 +1010,7 @@ a:hover .feature-card-copy .card-link svg {
   max-width: 780px;
 }
 .section-heading h2 {
-  font-size: 53px;
+  font-size: 40px;
 }
 .section-heading-center {
   margin-inline: auto;
@@ -1076,16 +1075,16 @@ a:hover .feature-card-copy .card-link svg {
 }
 .page-hero h1 {
   max-width: 1000px;
-  font-family: var(--serif);
-  font-size: 77px;
-  font-weight: 400;
+  font-family: var(--typeface);
+  font-size: 59px;
+  font-weight: 700;
   letter-spacing: -0.035em;
-  line-height: 1.02;
+  line-height: 1.14;
   margin: 0;
   text-wrap: balance;
 }
 .page-hero-with-image h1 {
-  font-size: 62px;
+  font-size: 47px;
 }
 .page-hero-description {
   max-width: 730px;
@@ -1152,16 +1151,16 @@ a:hover .feature-card-copy .card-link svg {
   gap: 23px;
 }
 .collection-index {
-  font-family: var(--serif);
+  font-family: var(--typeface);
   font-size: 55px;
   line-height: 1;
   color: #b6a078;
 }
 .solution-collection h2 {
-  font-family: var(--serif);
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 1;
+  font-family: var(--typeface);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.14;
   margin: 0;
 }
 .solution-collection-header > p {
@@ -1195,10 +1194,10 @@ a:hover .feature-card-copy .card-link svg {
   margin-bottom: 27px;
 }
 .solution-tile h3 {
-  font-family: var(--serif);
-  font-size: 31px;
-  font-weight: 500;
-  line-height: 1.08;
+  font-family: var(--typeface);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.14;
   margin: 0;
 }
 .solution-tile > p {
@@ -1239,9 +1238,9 @@ a:hover .feature-card-copy .card-link svg {
   box-shadow: none;
 }
 .reading-article h2 {
-  font-family: var(--serif);
-  font-size: 31px;
-  font-weight: 500;
+  font-family: var(--typeface);
+  font-size: 24px;
+  font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1.2;
 }
@@ -1261,7 +1260,7 @@ a:hover .feature-card-copy .card-link svg {
 }
 .about-manifesto h2 {
   color: white;
-  font-size: 62px;
+  font-size: 47px;
 }
 .about-manifesto h2 em {
   color: #d6bd88;
@@ -1315,10 +1314,10 @@ main .motion-card {
 }
 main .motion-card h2,
 main .motion-card h3 {
-  font-family: var(--serif);
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 1.1;
+  font-family: var(--typeface);
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.14;
 }
 main .motion-card p {
   font-size: 12px;
@@ -1330,7 +1329,7 @@ main .motion-card p {
     min-height: 820px;
   }
   .signature-hero h1 {
-    font-size: 118px;
+    font-size: 90px;
   }
 }
 @media (max-width: 1150px) {
@@ -1352,7 +1351,7 @@ main .motion-card p {
     width: 185px;
   }
   .signature-hero h1 {
-    font-size: 95px;
+    font-size: 72px;
   }
   .signature-hero-copy {
     max-width: 570px;
@@ -1369,7 +1368,7 @@ main .motion-card p {
     gap: 14px;
   }
   .focus-bar p {
-    font-size: 23px;
+    font-size: 18px;
   }
   .focus-number {
     right: 12px;
@@ -1379,7 +1378,7 @@ main .motion-card p {
     gap: 70px;
   }
   .home-section h2 {
-    font-size: 53px;
+    font-size: 40px;
   }
   .featured-grid {
     gap: 16px;
@@ -1388,13 +1387,13 @@ main .motion-card p {
     padding: 23px 19px;
   }
   .feature-card-copy h3 {
-    font-size: 27px;
+    font-size: 21px;
   }
   .education-editorial-copy {
     padding: 65px 40px 65px 50px;
   }
   .education-editorial-copy h2 {
-    font-size: 63px;
+    font-size: 48px;
   }
   .education-editorial-image {
     min-height: 600px;
@@ -1406,13 +1405,13 @@ main .motion-card p {
     gap: 40px;
   }
   .legacy-cta h2 {
-    font-size: 53px;
+    font-size: 40px;
   }
   .solution-tile {
     padding: 25px;
   }
   .page-hero-with-image h1 {
-    font-size: 56px;
+    font-size: 43px;
   }
   .page-hero-with-image .page-hero-grid {
     gap: 45px;
@@ -1485,7 +1484,7 @@ main .motion-card p {
     max-width: 550px;
   }
   .signature-hero h1 {
-    font-size: 91px;
+    font-size: 69px;
   }
   .hero-side-note {
     display: none;
@@ -1502,7 +1501,7 @@ main .motion-card p {
     width: 24px;
   }
   .focus-bar p {
-    font-size: 21px;
+    font-size: 17px;
   }
   .focus-bar > div > div > span {
     font-size: 8px;
@@ -1515,7 +1514,7 @@ main .motion-card p {
     padding-block: 95px;
   }
   .home-section h2 {
-    font-size: 48px;
+    font-size: 36px;
   }
   .intro-copy {
     padding-left: 25px;
@@ -1551,7 +1550,7 @@ main .motion-card p {
     border-top: 1px solid #dedbd2;
   }
   .philosophy-item h3 {
-    font-size: 36px;
+    font-size: 27px;
   }
   .featured-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1564,13 +1563,13 @@ main .motion-card p {
     padding: 28px;
   }
   .feature-card-copy h3 {
-    font-size: 32px;
+    font-size: 24px;
   }
   .education-editorial-copy {
     padding: 60px 35px;
   }
   .education-editorial-copy h2 {
-    font-size: 57px;
+    font-size: 43px;
   }
   .education-editorial-image {
     min-height: 610px;
@@ -1582,7 +1581,7 @@ main .motion-card p {
     padding: 25px;
   }
   .resource-editorial h3 {
-    font-size: 29px;
+    font-size: 22px;
   }
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1599,20 +1598,20 @@ main .motion-card p {
     gap: 45px;
   }
   .section-heading h2 {
-    font-size: 47px;
+    font-size: 36px;
   }
   .section-frame {
     padding-block: 75px;
   }
   .page-hero h1 {
-    font-size: 67px;
+    font-size: 51px;
   }
   .page-hero-with-image .page-hero-grid {
     grid-template-columns: 1fr;
     gap: 45px;
   }
   .page-hero-with-image h1 {
-    font-size: 65px;
+    font-size: 49px;
     max-width: 750px;
   }
   .page-hero-image {
@@ -1627,7 +1626,7 @@ main .motion-card p {
     gap: 30px 50px;
   }
   .about-manifesto h2 {
-    font-size: 53px;
+    font-size: 40px;
   }
 }
 @media (max-width: 700px) {
@@ -1656,7 +1655,7 @@ main .motion-card p {
     height: 46px;
   }
   .brand-wordmark > span:first-child {
-    font-size: 28px;
+    font-size: 23px;
   }
   .brand {
     gap: 9px;
@@ -1697,8 +1696,8 @@ main .motion-card p {
       linear-gradient(0deg, #061524ec 0%, #061524b0 15%, transparent 50%);
   }
   .signature-hero h1 {
-    font-size: 87px;
-    line-height: 0.95;
+    font-size: 66px;
+    line-height: 1.14;
   }
   .signature-hero-copy {
     width: 100%;
@@ -1745,7 +1744,7 @@ main .motion-card p {
     border-top: 1px solid #e5e3dc;
   }
   .focus-bar p {
-    font-size: 27px;
+    font-size: 22px;
   }
   .focus-bar svg {
     width: 28px;
@@ -1763,7 +1762,7 @@ main .motion-card p {
   }
   .home-section h2,
   .section-heading h2 {
-    font-size: 46px;
+    font-size: 35px;
   }
   .eyebrow {
     font-size: 8px;
@@ -1817,7 +1816,7 @@ main .motion-card p {
     gap: 30px;
   }
   .philosophy-item h3 {
-    font-size: 34px;
+    font-size: 26px;
     margin: 20px 0 12px;
   }
   .philosophy-item > p {
@@ -1837,7 +1836,7 @@ main .motion-card p {
     padding: 22px 17px;
   }
   .feature-card-copy h3 {
-    font-size: 27px;
+    font-size: 21px;
   }
   .feature-card-copy > p {
     font-size: 10px;
@@ -1861,7 +1860,7 @@ main .motion-card p {
     padding: 55px 25px 65px;
   }
   .education-editorial-copy h2 {
-    font-size: 67px;
+    font-size: 51px;
   }
   .education-editorial-copy > p:not(.eyebrow) {
     font-size: 12px;
@@ -1883,7 +1882,7 @@ main .motion-card p {
     font-size: 42px;
   }
   .process-step h3 {
-    font-size: 31px;
+    font-size: 24px;
     margin: 19px 0 12px;
   }
   .process-step p {
@@ -1898,7 +1897,7 @@ main .motion-card p {
     padding: 28px;
   }
   .resource-editorial h3 {
-    font-size: 37px;
+    font-size: 28px;
     margin-top: 24px;
   }
   .resource-editorial > p {
@@ -1914,7 +1913,7 @@ main .motion-card p {
     padding-block: 60px;
   }
   .legacy-cta h2 {
-    font-size: 50px;
+    font-size: 38px;
   }
   .legacy-cta p:not(.eyebrow) {
     font-size: 12px;
@@ -1971,7 +1970,7 @@ main .motion-card p {
   }
   .page-hero h1,
   .page-hero-with-image h1 {
-    font-size: 51px;
+    font-size: 39px;
   }
   .page-hero .eyebrow {
     font-size: 8px;
@@ -2011,7 +2010,7 @@ main .motion-card p {
     font-size: 45px;
   }
   .solution-collection h2 {
-    font-size: 42px;
+    font-size: 32px;
   }
   .solution-collection-header > p {
     font-size: 12px;
@@ -2025,7 +2024,7 @@ main .motion-card p {
     padding: 28px;
   }
   .solution-tile h3 {
-    font-size: 34px;
+    font-size: 26px;
   }
   .solution-tile > .card-link {
     font-size: 10px;
@@ -2034,7 +2033,7 @@ main .motion-card p {
     padding: 25px !important;
   }
   .reading-article h2 {
-    font-size: 30px;
+    font-size: 23px;
   }
   .reading-article p,
   .reading-article > div > div {
@@ -2045,7 +2044,7 @@ main .motion-card p {
     gap: 25px;
   }
   .about-manifesto h2 {
-    font-size: 49px;
+    font-size: 37px;
   }
   .about-manifesto > div {
     font-size: 12px;
@@ -2064,7 +2063,7 @@ main .motion-card p {
 }
 @media (max-width: 400px) {
   .signature-hero h1 {
-    font-size: 77px;
+    font-size: clamp(35px, 11.5vw, 45px);
   }
   .signature-hero,
   .signature-hero-inner {
@@ -2093,7 +2092,7 @@ main .motion-card p {
     padding: 26px;
   }
   .feature-card-copy h3 {
-    font-size: 35px;
+    font-size: 27px;
   }
   .feature-card-copy > p {
     font-size: 12px;
@@ -2102,10 +2101,10 @@ main .motion-card p {
     font-size: 10px;
   }
   .home-section h2 {
-    font-size: 43px;
+    font-size: 33px;
   }
   .education-editorial-copy h2 {
-    font-size: 61px;
+    font-size: 46px;
   }
 }
 @media (prefers-reduced-motion: no-preference) {

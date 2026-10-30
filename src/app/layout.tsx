@@ -3,26 +3,10 @@ import type { ReactNode } from "react";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const editorial = localFont({
-  src: [
-    {
-      path: "./fonts/cormorant-garamond-latin-normal.woff2",
-      weight: "400 600",
-      style: "normal",
-    },
-    {
-      path: "./fonts/cormorant-garamond-latin-italic.woff2",
-      weight: "400 600",
-      style: "italic",
-    },
-  ],
-  variable: "--font-editorial",
-  display: "swap",
-});
-const sans = localFont({
-  src: "./fonts/manrope-latin-variable.woff2",
-  weight: "200 800",
-  variable: "--font-body",
+const inter = localFont({
+  src: "./fonts/inter-latin-variable.woff2",
+  weight: "100 900",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -57,7 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${editorial.variable} ${sans.variable} h-full scroll-smooth antialiased`}
+      className={`${inter.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
         <a href="#main-content" className="skip-link">
