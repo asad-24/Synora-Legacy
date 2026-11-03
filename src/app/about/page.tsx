@@ -22,7 +22,7 @@ export default function AboutPage() {
         />
         <Section>
           <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="about-image parallax-media relative aspect-[4/3] overflow-hidden">
               <Image
                 src="/images/about-education.png"
                 alt="A focused educational conversation about family financial priorities"

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
+import { BlurText } from "@/components/motion/blur-text";
 import { cn } from "@/lib/utils";
 
 export function SiteShell({ children }: { children: ReactNode }) {
@@ -47,7 +48,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h2>{title}</h2>
+      <BlurText as="h2" text={title} />
       {text && <p className="section-description">{text}</p>}
     </div>
   );
@@ -66,40 +67,35 @@ export function PageHero({
   imageAlt?: string;
 }) {
   return (
-    <section className={cn("page-hero", image && "page-hero-with-image")}>
-      <div className="page-hero-orbit" aria-hidden="true" />
+    <section className="page-hero">
+      <div className="page-hero-background parallax-media">
+        <Image
+          src={image || "/images/consultation.png"}
+          alt={imageAlt || "A thoughtful financial education conversation"}
+          fill
+          loading="eager"
+          fetchPriority="high"
+          sizes="100vw"
+        />
+      </div>
+      <div className="page-hero-shade" />
       <div className="container">
         <nav className="breadcrumbs" aria-label="Breadcrumb">
           <Link href="/">Synora Legacy</Link>
           <ChevronRight size={12} aria-hidden="true" />
           <span>{eyebrow}</span>
         </nav>
-        <div className="page-hero-grid">
-          <div>
-            <p className="eyebrow eyebrow-light">
-              <span className="gold-rule" />
-              {eyebrow}
-            </p>
-            <h1>{title}</h1>
-            <p className="page-hero-description">{text}</p>
-          </div>
-          {image && (
-            <div className="page-hero-image">
-              <Image
-                src={image}
-                alt={imageAlt || title}
-                fill
-                loading="eager"
-                fetchPriority="high"
-                sizes="(max-width:900px) 100vw, 45vw"
-              />
-            </div>
-          )}
+        <div className="page-hero-copy">
+          <p className="eyebrow eyebrow-light">
+            <span className="status-dot" />
+            {eyebrow}
+          </p>
+          <BlurText as="h1" text={title} />
+          <p className="page-hero-description">{text}</p>
         </div>
-        <div className="page-hero-bottom">
-          <span>FINANCIAL EDUCATION • PROTECTION • LEGACY</span>
-          <span className="gold-rule" />
-        </div>
+        <span className="page-hero-brandline">
+          FINANCIAL EDUCATION • PROTECTION • LEGACY
+        </span>
       </div>
     </section>
   );
@@ -113,21 +109,36 @@ export function CTASection({
 }) {
   return (
     <section className="legacy-cta">
-      <div className="container">
-        <div>
-          <p className="eyebrow eyebrow-light">
-            YOUR TOMORROW STARTS WITH A CONVERSATION
-          </p>
-          <h2>{title}</h2>
-          <p>{text}</p>
-        </div>
-        <Link href="/contact#schedule" className="button button-gold">
-          Schedule a conversation <ArrowUpRight size={18} aria-hidden="true" />
-        </Link>
+      <div className="cta-photo parallax-media">
+        <Image
+          src="/images/services/legacy-planning-hero.png"
+          alt="A family sharing time together"
+          fill
+          sizes="100vw"
+        />
       </div>
-      <span className="cta-watermark" aria-hidden="true">
-        S
-      </span>
+      <div className="cta-shade" />
+      <div className="container">
+        <div className="cta-glass" data-reveal>
+          <div>
+            <p className="eyebrow eyebrow-light">
+              PROTECT TODAY. PRESERVE TOMORROW.
+            </p>
+            <BlurText as="h2" text={title} />
+            <p>{text}</p>
+          </div>
+          <div className="cta-actions">
+            <Link href="/contact#schedule" className="button button-gold">
+              Schedule a conversation{" "}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
+            <Link href="/solutions" className="button button-outline-light">
+              Explore our solutions{" "}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -15,7 +15,8 @@ Open http://localhost:3010. For a production build, run `npm run build`, then `n
 
 - Luxury navy, champagne gold, and white branding; Inter typography matching Fredsola; full-width family imagery; shield/tree mark; and favicon.
 - Responsive homepage, about, solutions and 13 solution detail pages, resources and resource details, FAQ, careers, contact, and legal pages.
-- Mobile navigation, accessible links and forms, reduced-motion support, and social metadata.
+- FilmPermit-inspired floating capsule navigation, animated mobile drawer, blurred word reveals, scroll reveals, Lenis smooth scrolling, parallax images, cinematic service cards, looping focus strip with pause control, animated process numbers, short branded intro, and expandable FAQs. All use Synora’s existing navy/gold palette and Fredsola’s English content.
+- Accessible links and forms, reduced-motion support, no-JavaScript content fallbacks, and social metadata.
 - Existing educational content and imagery adapted from the reference project. All adapted content remains a draft for this new business.
 - Brevo contact endpoints and optional Calendly booking. No original secrets, founder identity, license, testimonials, carrier appointments, or private Git history were copied into this project.
 

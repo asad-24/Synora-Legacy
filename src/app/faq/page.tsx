@@ -1,4 +1,5 @@
-import { ApprovedDocContent } from "@/components/site/approved-doc-content";
+import { FAQAccordion } from "@/components/site/faq-accordion";
+import { faqs, faqNotices } from "@/data/faqs";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import {
@@ -23,7 +24,14 @@ export default function FAQPage() {
           text="Clear answers to common questions about protection, retirement, education, legacy planning, insurance, and how Synora Legacy works."
         />
         <Section>
-          <ApprovedDocContent docKey="faq" />
+          <div className="faq-page-content">
+            <FAQAccordion items={faqs} />
+            {faqNotices.map((notice) => (
+              <p key={notice} className="educational-note">
+                {notice}
+              </p>
+            ))}
+          </div>
         </Section>
         <CTASection
           title="Still have a question?"

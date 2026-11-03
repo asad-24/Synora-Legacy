@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
+import { MotionProvider } from "@/components/motion/motion-provider";
+import { StartupIntro } from "@/components/motion/startup-intro";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 const inter = localFont({
@@ -38,16 +41,13 @@ export const metadata: Metadata = {
 };
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="en"
-      data-scroll-behavior="smooth"
-      className={`${inter.variable} h-full scroll-smooth antialiased`}
-    >
+    <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full bg-background text-foreground">
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        {children}
+        <StartupIntro />
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

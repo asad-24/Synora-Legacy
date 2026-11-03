@@ -14,7 +14,7 @@ export function SolutionsGroup({
 }) {
   return (
     <section className="solution-collection">
-      <div className="solution-collection-header">
+      <div className="solution-collection-header" data-reveal>
         <div>
           <span className="collection-index">0{index + 1}</span>
           <h2>{title}</h2>
