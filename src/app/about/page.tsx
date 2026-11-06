@@ -22,12 +22,12 @@ export default function AboutPage() {
         />
         <Section>
           <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div className="about-image parallax-media relative aspect-[4/3] overflow-hidden">
+            <div className="about-image relative mx-auto aspect-[3/4] w-full max-w-[420px] overflow-hidden border border-[#ccb17a]/30 bg-[#091c30]">
               <Image
-                src="/images/about-education.png"
-                alt="A focused educational conversation about family financial priorities"
+                src="/images/maam-pic.jpeg"
+                alt="Portrait of the Synora Legacy representative"
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 460px) calc(100vw - 40px), 420px"
                 className="object-cover"
               />
             </div>
