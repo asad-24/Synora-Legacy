@@ -9,7 +9,13 @@ import {
   SiteShell,
 } from "@/components/site/section";
 import { approach, philosophy } from "@/data/site";
-export const metadata = { title: "Our Story" };
+import { founderStory } from "@/data/founder-story";
+import { professional } from "@/data/professional";
+export const metadata = {
+  title: "Our Founder’s Story",
+  description:
+    "From a calling to care to a purpose to protect. Discover the personal journey of Synora Legacy’s Founder and CEO.",
+};
 export default function AboutPage() {
   return (
     <SiteShell>
@@ -17,68 +23,53 @@ export default function AboutPage() {
       <main id="main-content" className="flex-1">
         <PageHero
           eyebrow="THE SYNORA LEGACY STORY"
-          title="Financial guidance shaped by education, care, and clarity."
-          text="Synora Legacy helps individuals and families approach important financial choices with calm, organized conversations."
+          title={founderStory.title}
+          text="The personal journey behind Synora Legacy, shared by our Founder and CEO."
         />
-        <Section>
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div className="about-image relative mx-auto aspect-[3/4] w-full max-w-[420px] overflow-hidden border border-[#ccb17a]/30 bg-[#091c30]">
-              <Image
-                src="/images/maam-pic.jpeg"
-                alt="Portrait of the Synora Legacy representative"
-                fill
-                sizes="(max-width: 460px) calc(100vw - 40px), 420px"
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <SectionHeading
-                eyebrow="OUR PURPOSE"
-                title="A professional firm with a human way of explaining things."
-              />
-              <div className="mt-6 space-y-5 text-sm leading-8 text-[#54616b]">
-                <p>
-                  Synora Legacy exists for people who want to understand their
-                  options before making financial decisions. The firm’s role is
-                  to listen, educate, and help families think clearly about
-                  protection, preparation, and long-term priorities.
-                </p>
-                <p>
-                  Every conversation begins with the client’s goals and
-                  concerns. From there, the work is to explain financial
-                  concepts in plain language and help evaluate strategies that
-                  may fit the situation.
-                </p>
+        <Section id="founder-story">
+          <div className="grid items-start gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
+            <figure
+              className="mx-auto w-full max-w-[420px] lg:sticky lg:top-32"
+              data-reveal
+            >
+              <div className="about-image relative aspect-[3/4] overflow-hidden border border-[#ccb17a]/30 bg-[#091c30]">
+                <Image
+                  src="/images/maam-pic.jpeg"
+                  alt="Portrait of Synora Legacy’s Founder and CEO"
+                  fill
+                  sizes="(max-width: 460px) calc(100vw - 40px), 420px"
+                  className="object-cover"
+                />
               </div>
-            </div>
-          </div>
-        </Section>
-        <Section tone="navy">
-          <div className="about-manifesto">
-            <p className="eyebrow eyebrow-light">WHY SYNORA LEGACY EXISTS</p>
-            <h2>
-              Financial education should be <em>accessible to everyone.</em>
-            </h2>
-            <div>
-              <p>
-                For generations, financial education has been taught at the
-                kitchen table—but too often, that table belonged to the wealthy.
-              </p>
-              <p>
-                It’s where conversations about money, protection, wealth, and
-                the future were shared and passed from one generation to the
-                next.
-              </p>
-              <p>
-                Synora Legacy was created to change that—to make financial
-                education and understanding accessible to everyone.
-              </p>
-              <p>
-                We believe education is more than simply having information.
-                It’s about understanding your options, asking better questions,
-                and gaining the confidence to make informed decisions.
-              </p>
-            </div>
+              <figcaption className="mt-6 border-l-2 border-[#ccb17a] pl-5">
+                {professional.name && (
+                  <p className="mb-2 text-xl font-bold text-[#091c30]">
+                    {professional.name}
+                  </p>
+                )}
+                <p className="text-sm font-bold text-[#8b6c35]">
+                  {professional.leadershipTitle}
+                </p>
+                <p className="mt-2 text-sm text-[#5b6771]">Synora Legacy</p>
+              </figcaption>
+            </figure>
+            <article aria-label="Our founder’s story" data-reveal>
+              <p className="eyebrow">A MESSAGE FROM OUR FOUNDER</p>
+              <div className="space-y-6 text-[15px] leading-8 text-[#54616b] sm:text-base">
+                {founderStory.paragraphs.map((paragraph, index) => (
+                  <p
+                    key={paragraph}
+                    className={
+                      index === founderStory.paragraphs.length - 1
+                        ? "border-t border-[#ccb17a]/40 pt-6 font-medium text-[#091c30]"
+                        : undefined
+                    }
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </article>
           </div>
         </Section>
         <Section tone="cream">
