@@ -49,7 +49,7 @@ export function StartupIntro() {
               SYNORA <span>LEGACY</span>
             </p>
             <span className="startup-rule" />
-            <small>Protect Today. Preserve Tomorrow.</small>
+            <small>Protect Today. Secure Tomorrow.</small>
           </div>
         </motion.div>
       )}

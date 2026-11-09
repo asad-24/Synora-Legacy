@@ -16,15 +16,15 @@ const inter = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://synoralegacy.com"),
   title: {
-    default: "Synora Legacy | Protect Today. Preserve Tomorrow.",
+    default: "Synora Legacy | Protect Today. Secure Tomorrow.",
     template: "%s | Synora Legacy",
   },
   description:
-    "Financial education, protection, and legacy. Thoughtful conversations to help families understand their options and prepare for tomorrow.",
+    "Helping individuals and families make confident financial choices, protect what matters most, prepare for tomorrow, and build a legacy that lasts.",
   openGraph: {
     title: "Synora Legacy",
     description:
-      "Protect Today. Preserve Tomorrow. Financial education, protection, and legacy for the people who matter most.",
+      "Helping individuals and families make confident financial choices, protect what matters most, prepare for tomorrow, and build a legacy that lasts.",
     siteName: "Synora Legacy",
     locale: "en_US",
     type: "website",

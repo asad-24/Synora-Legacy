@@ -195,7 +195,7 @@ export function Header() {
                 <p>
                   Protect Today.
                   <br />
-                  Preserve Tomorrow.
+                  Secure Tomorrow.
                 </p>
                 <Link
                   href="/contact"

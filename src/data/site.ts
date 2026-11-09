@@ -47,7 +47,7 @@ export type ResourcePage = {
 
 export const company = {
   name: "Synora Legacy",
-  tagline: "Protect Today. Preserve Tomorrow.",
+  tagline: "Protect Today. Secure Tomorrow.",
   representative: professional.name || "Synora Legacy",
   role: professional.approvedTitle,
   email: professional.email,

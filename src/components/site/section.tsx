@@ -122,7 +122,7 @@ export function CTASection({
         <div className="cta-glass" data-reveal>
           <div>
             <p className="eyebrow eyebrow-light">
-              PROTECT TODAY. PRESERVE TOMORROW.
+              PROTECT TODAY. SECURE TOMORROW.
             </p>
             <BlurText as="h2" text={title} />
             <p>{text}</p>

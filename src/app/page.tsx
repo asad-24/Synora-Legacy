@@ -50,14 +50,15 @@ export default function HomePage() {
               <h1 id="hero-heading">
                 <BlurText text="Protect Today." className="hero-line" />
                 <BlurText
-                  text="Preserve Tomorrow."
+                  text="Secure Tomorrow."
                   className="hero-line hero-line-gold"
                   delay={85}
                 />
               </h1>
               <p className="hero-description">
-                Helping individuals and families make informed financial
-                decisions, protect what matters most, and prepare for tomorrow.
+                Helping individuals and families make confident financial
+                choices, protect what matters most, prepare for tomorrow, and
+                build a legacy that lasts.
               </p>
               <div className="hero-priorities">
                 {[
