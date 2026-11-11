@@ -1,4 +1,5 @@
-// Retained for the cloned page components. This project is English only.
+"use client";
+import { useLanguage } from "@/components/site/language-provider";
 export function useTranslation() {
-  return (value: string) => value;
+  return useLanguage().t;
 }

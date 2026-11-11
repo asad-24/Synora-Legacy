@@ -1,15 +1,17 @@
 "use client";
-
-import Link from "next/link";
+import { useTranslation } from "@/lib/use-translation";
+import { LocaleLink as Link } from "@/components/site/locale-link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { navigation, services } from "@/data/site";
+import { LanguageSwitcher } from "./language-switcher";
+import { stripLocaleFromPathname } from "@/lib/i18n";
 import { Logo } from "./logo";
-
 export function Header() {
-  const pathname = usePathname();
+  const t = useTranslation();
+  const pathname = stripLocaleFromPathname(usePathname());
   const [open, setOpen] = useState(false);
   const [compact, setCompact] = useState(false);
   const reduce = useReducedMotion();
@@ -20,7 +22,6 @@ export function Header() {
       ? pathname === "/"
       : pathname.startsWith(href) ||
         (href === "/careers" && pathname === "/join-us");
-
   useEffect(() => {
     const update = () => setCompact(window.scrollY > 30);
     update();
@@ -29,6 +30,7 @@ export function Header() {
   }, []);
   useEffect(() => {
     if (!open) return;
+    const toggleButton = toggle.current;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const frame = requestAnimationFrame(() =>
@@ -58,25 +60,26 @@ export function Header() {
       cancelAnimationFrame(frame);
       document.body.style.overflow = previous;
       document.removeEventListener("keydown", onKey);
-      toggle.current?.focus();
+      toggleButton?.focus();
     };
   }, [open]);
-
   return (
     <>
       <header className={`site-header ${compact ? "is-compact" : ""}`}>
         <div className="header-main">
           <Logo />
-          <nav className="desktop-nav" aria-label="Main navigation">
+          <nav className="desktop-nav" aria-label={t("Main navigation")}>
             {navigation.map((item) =>
               item.href === "/solutions" ? (
                 <details className="nav-solutions" key={item.href}>
                   <summary className={active(item.href) ? "is-active" : ""}>
-                    Solutions <ChevronDown size={14} aria-hidden="true" />
+                    {t("Solutions")}
+                    <ChevronDown size={14} aria-hidden="true" />
                   </summary>
                   <div className="solutions-dropdown" data-lenis-prevent>
                     <Link href="/solutions" className="dropdown-overview">
-                      Explore all solutions{" "}
+                      {t("Explore all solutions")}
+                      {" "}
                       <ArrowUpRight size={15} aria-hidden="true" />
                     </Link>
                     {services.map((service) => (
@@ -84,7 +87,7 @@ export function Header() {
                         key={service.slug}
                         href={`/solutions/${service.slug}`}
                       >
-                        {service.shortTitle}
+                        {t(service.shortTitle)}
                       </Link>
                     ))}
                   </div>
@@ -95,19 +98,21 @@ export function Header() {
                   key={item.href}
                   aria-current={active(item.href) ? "page" : undefined}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               ),
             )}
           </nav>
           <Link href="/contact" className="button button-gold header-cta">
-            Let’s connect <ArrowUpRight size={16} aria-hidden="true" />
+            {t("Let\u2019s connect")}
+            <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
+          <LanguageSwitcher />
           <button
             type="button"
             ref={toggle}
             className="menu-toggle"
-            aria-label="Open navigation"
+            aria-label={t("Open navigation")}
             aria-expanded={open}
             aria-controls="mobile-navigation"
             onClick={() => setOpen(true)}
@@ -134,7 +139,7 @@ export function Header() {
               className="mobile-drawer"
               ref={drawer}
               role="dialog"
-              aria-label="Navigation menu"
+              aria-label={t("Navigation menu")}
               aria-modal="true"
               data-lenis-prevent
               initial={{ x: "100%" }}
@@ -150,22 +155,23 @@ export function Header() {
                 <button
                   type="button"
                   className="drawer-close"
-                  aria-label="Close navigation"
+                  aria-label={t("Close navigation")}
                   onClick={() => setOpen(false)}
                 >
                   <X size={21} />
                 </button>
               </div>
-              <nav aria-label="Mobile navigation" className="mobile-nav">
+              <nav aria-label={t("Mobile navigation")} className="mobile-nav">
                 {navigation.map((item) =>
                   item.href === "/solutions" ? (
                     <details key={item.href} className="mobile-solutions">
                       <summary>
-                        Solutions <ChevronDown size={17} />
+                        {t("Solutions")}
+                        <ChevronDown size={17} />
                       </summary>
                       <div>
                         <Link href="/solutions" onClick={() => setOpen(false)}>
-                          Explore all solutions
+                          {t("Explore all solutions")}
                         </Link>
                         {services.map((service) => (
                           <Link
@@ -173,7 +179,7 @@ export function Header() {
                             href={`/solutions/${service.slug}`}
                             onClick={() => setOpen(false)}
                           >
-                            {service.shortTitle}
+                            {t(service.shortTitle)}
                           </Link>
                         ))}
                       </div>
@@ -185,26 +191,30 @@ export function Header() {
                       onClick={() => setOpen(false)}
                       aria-current={active(item.href) ? "page" : undefined}
                     >
-                      {item.label}
+                      {t(item.label)}
                       <ArrowUpRight size={16} aria-hidden="true" />
                     </Link>
                   ),
                 )}
               </nav>
               <div className="drawer-bottom">
+                <LanguageSwitcher />
                 <p>
-                  Protect Today.
+                  {t("Protect Today.")}
                   <br />
-                  Secure Tomorrow.
+                  {t("Secure Tomorrow.")}
                 </p>
                 <Link
                   href="/contact"
                   className="button button-gold"
                   onClick={() => setOpen(false)}
                 >
-                  Start a conversation <ArrowUpRight size={17} />
+                  {t("Start a conversation")}
+                  <ArrowUpRight size={17} />
                 </Link>
-                <span>FINANCIAL EDUCATION • PROTECTION • LEGACY</span>
+                <span>
+                  {t("FINANCIAL EDUCATION \u2022 PROTECTION \u2022 LEGACY")}
+                </span>
               </div>
             </motion.aside>
           </>

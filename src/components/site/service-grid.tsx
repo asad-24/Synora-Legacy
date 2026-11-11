@@ -1,12 +1,11 @@
+import { getTranslation } from "@/lib/i18n/server";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import type { CSSProperties } from "react";
-
 import type { Service } from "@/data/site";
 import { LocaleLink } from "./locale-link";
 import { TranslatedText } from "./translated-text";
-
-export function ServiceGrid({
+export async function ServiceGrid({
   services,
   limit,
   variant = "standard",
@@ -15,14 +14,13 @@ export function ServiceGrid({
   limit?: number;
   variant?: "standard" | "media";
 }) {
+  const t = await getTranslation();
   const visibleServices =
     typeof limit === "number" ? services.slice(0, limit) : services;
-
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {visibleServices.map((service, index) => {
         const Icon = service.icon;
-
         return variant === "media" ? (
           <LocaleLink
             key={service.slug}
@@ -35,7 +33,7 @@ export function ServiceGrid({
               {service.heroImage ? (
                 <Image
                   src={service.heroImage}
-                  alt={service.heroImageAlt ?? service.title}
+                  alt={t(service.heroImageAlt ?? service.title)}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition duration-500 group-hover:scale-[1.04]"

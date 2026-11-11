@@ -1,9 +1,9 @@
 "use client";
-
+import { useTranslation } from "@/lib/use-translation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-
 export function StartupIntro() {
+  const t = useTranslation();
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -13,7 +13,7 @@ export function StartupIntro() {
       /* Storage may be disabled; the intro still has a bounded duration. */
     }
     document.documentElement.dataset.intro = "loading";
-    setVisible(true);
+    const frame = window.requestAnimationFrame(() => setVisible(true));
     const timer = window.setTimeout(() => {
       setVisible(false);
       document.documentElement.dataset.intro = "ready";
@@ -22,6 +22,7 @@ export function StartupIntro() {
       } catch {}
     }, 700);
     return () => {
+      window.cancelAnimationFrame(frame);
       window.clearTimeout(timer);
       document.documentElement.dataset.intro = "ready";
     };
@@ -32,7 +33,7 @@ export function StartupIntro() {
         <motion.div
           className="startup-intro"
           role="status"
-          aria-label="Welcome to Synora Legacy"
+          aria-label={t("Welcome to Synora Legacy")}
           initial={{ opacity: 1 }}
           exit={{ y: "-100%", opacity: 0 }}
           transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
@@ -46,10 +47,10 @@ export function StartupIntro() {
               />
             </svg>
             <p>
-              SYNORA <span>LEGACY</span>
+              SYNORA<span>LEGACY</span>
             </p>
             <span className="startup-rule" />
-            <small>Protect Today. Secure Tomorrow.</small>
+            <small>{t("Protect Today. Secure Tomorrow.")}</small>
           </div>
         </motion.div>
       )}

@@ -1,6 +1,18 @@
+"use client";
 import Link from "next/link";
 import type { ComponentProps } from "react";
-// Existing content now uses ordinary, English-only links.
-export function LocaleLink(props: ComponentProps<typeof Link>) {
-  return <Link {...props} />;
+import { useLanguage } from "./language-provider";
+import { withLocalePath } from "@/lib/i18n";
+export function LocaleLink({ href, ...props }: ComponentProps<typeof Link>) {
+  const { locale } = useLanguage();
+  return (
+    <Link
+      {...props}
+      href={
+        typeof href === "string"
+          ? withLocalePath(href, locale)
+          : { ...href, pathname: withLocalePath(href.pathname || "/", locale) }
+      }
+    />
+  );
 }

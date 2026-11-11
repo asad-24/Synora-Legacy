@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+import { useTranslation } from "@/lib/use-translation";
+import { LocaleLink as Link } from "@/components/site/locale-link";
 export function Logo({
   className = "",
   light = false,
@@ -6,11 +8,12 @@ export function Logo({
   className?: string;
   light?: boolean;
 }) {
+  const t = useTranslation();
   return (
     <Link
       href="/"
       className={`brand ${light ? "brand-light" : ""} ${className}`}
-      aria-label="Synora Legacy home"
+      aria-label={t("Synora Legacy home")}
     >
       <svg
         viewBox="0 0 48 52"

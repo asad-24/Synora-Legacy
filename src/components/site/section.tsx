@@ -1,10 +1,10 @@
+import { getTranslation } from "@/lib/i18n/server";
 import Image from "next/image";
-import Link from "next/link";
+import { LocaleLink as Link } from "@/components/site/locale-link";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { BlurText } from "@/components/motion/blur-text";
 import { cn } from "@/lib/utils";
-
 export function SiteShell({ children }: { children: ReactNode }) {
   return <div className="flex min-h-screen flex-col">{children}</div>;
 }
@@ -29,7 +29,7 @@ export function Section({
     </section>
   );
 }
-export function SectionHeading({
+export async function SectionHeading({
   eyebrow,
   title,
   text,
@@ -40,6 +40,7 @@ export function SectionHeading({
   text?: string;
   align?: "left" | "center";
 }) {
+  const t = await getTranslation();
   return (
     <div
       className={cn(
@@ -47,13 +48,13 @@ export function SectionHeading({
         align === "center" && "section-heading-center",
       )}
     >
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <BlurText as="h2" text={title} />
-      {text && <p className="section-description">{text}</p>}
+      {eyebrow && <p className="eyebrow">{t(eyebrow)}</p>}
+      <BlurText as="h2" text={t(title)} />
+      {text && <p className="section-description">{t(text)}</p>}
     </div>
   );
 }
-export function PageHero({
+export async function PageHero({
   eyebrow,
   title,
   text,
@@ -66,12 +67,13 @@ export function PageHero({
   image?: string;
   imageAlt?: string;
 }) {
+  const t = await getTranslation();
   return (
     <section className="page-hero">
       <div className="page-hero-background parallax-media">
         <Image
           src={image || "/images/consultation.png"}
-          alt={imageAlt || "A thoughtful financial education conversation"}
+          alt={t(imageAlt || "A thoughtful financial education conversation")}
           fill
           loading="eager"
           fetchPriority="high"
@@ -80,39 +82,40 @@ export function PageHero({
       </div>
       <div className="page-hero-shade" />
       <div className="container">
-        <nav className="breadcrumbs" aria-label="Breadcrumb">
-          <Link href="/">Synora Legacy</Link>
+        <nav className="breadcrumbs" aria-label={t("Breadcrumb")}>
+          <Link href="/">{t("Synora Legacy")}</Link>
           <ChevronRight size={12} aria-hidden="true" />
-          <span>{eyebrow}</span>
+          <span>{t(eyebrow)}</span>
         </nav>
         <div className="page-hero-copy">
           <p className="eyebrow eyebrow-light">
             <span className="status-dot" />
-            {eyebrow}
+            {t(eyebrow)}
           </p>
-          <BlurText as="h1" text={title} />
-          <p className="page-hero-description">{text}</p>
+          <BlurText as="h1" text={t(title)} />
+          <p className="page-hero-description">{t(text)}</p>
         </div>
         <span className="page-hero-brandline">
-          FINANCIAL EDUCATION • PROTECTION • LEGACY
+          {t("FINANCIAL EDUCATION \u2022 PROTECTION \u2022 LEGACY")}
         </span>
       </div>
     </section>
   );
 }
-export function CTASection({
+export async function CTASection({
   title = "Start with a thoughtful conversation.",
   text = "Bring your questions, priorities, and concerns. Synora Legacy will help you organize the next step with clarity.",
 }: {
   title?: string;
   text?: string;
 }) {
+  const t = await getTranslation();
   return (
     <section className="legacy-cta">
       <div className="cta-photo parallax-media">
         <Image
           src="/images/services/legacy-planning-hero.png"
-          alt="A family sharing time together"
+          alt={t("A family sharing time together")}
           fill
           sizes="100vw"
         />
@@ -122,18 +125,18 @@ export function CTASection({
         <div className="cta-glass" data-reveal>
           <div>
             <p className="eyebrow eyebrow-light">
-              PROTECT TODAY. SECURE TOMORROW.
+              {t("PROTECT TODAY. SECURE TOMORROW.")}
             </p>
-            <BlurText as="h2" text={title} />
-            <p>{text}</p>
+            <BlurText as="h2" text={t(title)} />
+            <p>{t(text)}</p>
           </div>
           <div className="cta-actions">
             <Link href="/contact#schedule" className="button button-gold">
-              Schedule a conversation{" "}
+              {t("Schedule a conversation")}{" "}
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
             <Link href="/solutions" className="button button-outline-light">
-              Explore our solutions{" "}
+              {t("Explore our solutions")}{" "}
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>

@@ -1,8 +1,7 @@
 "use client";
-
+import { useTranslation } from "@/lib/use-translation";
 import { useEffect, useRef, type ElementType } from "react";
 import gsap from "gsap";
-
 export function BlurText({
   text,
   as: Tag = "span",
@@ -14,6 +13,8 @@ export function BlurText({
   className?: string;
   delay?: number;
 }) {
+  const t = useTranslation();
+  const localizedText = t(text);
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     const element = ref.current;
@@ -52,11 +53,11 @@ export function BlurText({
       };
     });
     return () => media.revert();
-  }, [text, delay]);
+  }, [localizedText, delay]);
   const Component = Tag as ElementType;
   return (
     <Component ref={ref} className={`blur-text ${className}`}>
-      {text.split(" ").map((word, index, all) => (
+      {localizedText.split(" ").map((word, index, all) => (
         <span className="blur-word" key={`${word}-${index}`}>
           {word}
           {index < all.length - 1 ? "\u00a0" : ""}

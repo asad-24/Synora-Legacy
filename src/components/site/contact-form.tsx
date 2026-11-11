@@ -1,14 +1,11 @@
 "use client";
-
+import { useLanguage } from "./language-provider";
 import { useState, type FormEvent } from "react";
-
 import { Button } from "@/components/ui/button";
 import { conversationTopics } from "@/data/site";
 import { useTranslation } from "@/lib/use-translation";
 import { TurnstileField, resetTurnstile } from "./turnstile-field";
-
 type SubmitState = "idle" | "sending" | "success" | "error";
-
 export function ContactForm({
   enabled = false,
   initialTopic,
@@ -17,9 +14,9 @@ export function ContactForm({
   initialTopic?: string;
 }) {
   const t = useTranslation();
+  const { locale } = useLanguage();
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
-
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!enabled) return;
@@ -27,24 +24,20 @@ export function ContactForm({
     const formData = new FormData(form);
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 20000);
-
     setSubmitState("sending");
     setMessage("");
-
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         body: formData,
         signal: controller.signal,
       });
-
       if (response.ok) {
         form.reset();
         setSubmitState("success");
         setMessage("Thank you. Your message has been sent to Synora Legacy.");
         return;
       }
-
       const data = (await response.json().catch(() => null)) as {
         error?: string;
       } | null;
@@ -60,7 +53,6 @@ export function ContactForm({
       resetTurnstile();
     }
   }
-
   return (
     <form
       onSubmit={handleSubmit}
@@ -68,24 +60,25 @@ export function ContactForm({
     >
       {!enabled && (
         <p className="form-note" role="status">
-          You’re viewing a website preview. Messaging will be available when
-          Synora Legacy launches.
+          {t(
+            "You\u2019re viewing a website preview. Messaging will be available when Synora Legacy launches.",
+          )}
         </p>
       )}
       <fieldset
         disabled={!enabled || submitState === "sending"}
         className="grid min-w-0 gap-4 border-0 p-0"
       >
-        <input type="hidden" name="locale" value="en" />
+        <input type="hidden" name="locale" value={locale} />
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field label="First name" name="firstName" required />
-          <Field label="Last name" name="lastName" required />
+          <Field label={t("First name")} name="firstName" required />
+          <Field label={t("Last name")} name="lastName" required />
         </div>
-        <Field label="Email address" name="email" type="email" required />
-        <Field label="Phone number" name="phone" type="tel" required />
+        <Field label={t("Email address")} name="email" type="email" required />
+        <Field label={t("Phone number")} name="phone" type="tel" required />
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field label="City of residence" name="city" required />
-          <Field label="State" name="state" required />
+          <Field label={t("City of residence")} name="city" required />
+          <Field label={t("State")} name="state" required />
         </div>
         <label className="grid min-w-0 gap-2 text-sm font-semibold text-[#071629]">
           {t("Conversation topic")}
@@ -126,23 +119,22 @@ export function ContactForm({
         <p
           role="status"
           aria-live="polite"
-          className={`text-xs leading-6 ${
-            submitState === "success" ? "text-[#0B1F3A]" : "text-red-700"
-          }`}
+          className={`text-xs leading-6 ${submitState === "success" ? "text-[#0B1F3A]" : "text-red-700"}`}
         >
           {t(message)}
         </p>
       ) : (
         <p className="text-xs leading-6 text-[#334155]">
-          {enabled
-            ? "Your message will be sent to Synora Legacy. Please do not include sensitive information."
-            : "Preview form — no messages are sent."}
+          {t(
+            enabled
+              ? "Your message will be sent to Synora Legacy. Please do not include sensitive information."
+              : "Preview form — no messages are sent.",
+          )}
         </p>
       )}
     </form>
   );
 }
-
 function Field({
   label,
   name,
@@ -154,11 +146,9 @@ function Field({
   type?: string;
   required?: boolean;
 }) {
-  const t = useTranslation();
-
   return (
     <label className="grid min-w-0 gap-2 text-sm font-semibold text-[#071629]">
-      {t(label)}
+      {label}
       <input
         name={name}
         type={type}

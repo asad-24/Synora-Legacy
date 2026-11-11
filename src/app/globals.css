@@ -2487,3 +2487,107 @@ main .motion-card p {
     display: none;
   }
 }
+/* Language controls stay available in both navigation layouts. */
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid #091c3015;
+  border-radius: 999px;
+  background: #f7f6f2;
+}
+.language-switcher > a {
+  display: grid;
+  place-items: center;
+  min-width: 31px;
+  min-height: 29px;
+  padding: 5px;
+  border-radius: 50%;
+  color: #596b79;
+  font-size: 9px;
+  font-weight: 750;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.language-switcher > a[aria-current] {
+  background: var(--navy);
+  color: #fff;
+}
+.language-switcher > a:hover {
+  background: #ccb17a40;
+  color: var(--navy);
+}
+.drawer-bottom > .language-switcher {
+  display: flex;
+  width: max-content;
+  margin-bottom: 20px;
+}
+.drawer-bottom > .language-switcher > a {
+  min-width: 37px;
+}
+html:not([lang="en"]) .desktop-nav {
+  gap: 0;
+}
+html:not([lang="en"]) .desktop-nav > a,
+html:not([lang="en"]) .nav-solutions > summary {
+  padding-inline: 9px;
+  font-size: 11px;
+}
+html:not([lang="en"]) .header-main {
+  gap: 15px;
+}
+html:not([lang="en"]) .header-cta {
+  font-size: 10px;
+  padding-inline: 16px;
+}
+html:not([lang="en"]) .signature-hero h1 {
+  font-size: clamp(38px, 4.4vw, 64px);
+}
+html:not([lang="en"]) .blur-word {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .header-main {
+    gap: 9px;
+  }
+  .header-main .language-switcher {
+    margin-left: auto;
+    gap: 0;
+    padding: 2px;
+  }
+  .header-main .language-switcher > a {
+    min-width: 26px;
+    min-height: 27px;
+    font-size: 8px;
+  }
+  .header-main .brand {
+    width: auto;
+  }
+  .header-main .brand-wordmark > span:first-child {
+    font-size: 19px;
+  }
+  html:not([lang="en"]) .signature-hero h1 {
+    font-size: clamp(26px, 6.6vw, 43px);
+  }
+}
+@media (max-width: 380px) {
+  .header-main .brand-mark {
+    width: 26px;
+  }
+  .header-main .brand-wordmark > span:first-child {
+    font-size: 16px;
+  }
+  .header-main .brand {
+    gap: 5px;
+  }
+  .header-main .language-switcher > a {
+    min-width: 24px;
+  }
+  .header-main .menu-toggle {
+    width: 34px;
+    height: 34px;
+  }
+}

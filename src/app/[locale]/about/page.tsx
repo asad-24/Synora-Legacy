@@ -1,3 +1,5 @@
+import { localizedMetadata } from "@/lib/i18n/metadata";
+import { getTranslation } from "@/lib/i18n/server";
 import Image from "next/image";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
@@ -11,20 +13,32 @@ import {
 import { approach, philosophy } from "@/data/site";
 import { founderStory } from "@/data/founder-story";
 import { professional } from "@/data/professional";
-export const metadata = {
+const pageMetadata = {
   title: "Our Founder’s Story",
   description:
     "From a calling to care to a purpose to protect. Discover the personal journey of Synora Legacy’s Founder and CEO.",
 };
-export default function AboutPage() {
+export async function generateMetadata() {
+  return localizedMetadata(
+    "/about",
+    pageMetadata.title,
+    "description" in pageMetadata
+      ? String(pageMetadata.description)
+      : undefined,
+  );
+}
+export default async function AboutPage() {
+  const t = await getTranslation();
   return (
     <SiteShell>
       <Header />
       <main id="main-content" className="flex-1">
         <PageHero
-          eyebrow="THE SYNORA LEGACY STORY"
-          title={founderStory.title}
-          text="The personal journey behind Synora Legacy, shared by our Founder and CEO."
+          eyebrow={t("THE SYNORA LEGACY STORY")}
+          title={t(founderStory.title)}
+          text={t(
+            "The personal journey behind Synora Legacy, shared by our Founder and CEO.",
+          )}
         />
         <Section id="founder-story">
           <div className="grid items-start gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
@@ -35,7 +49,7 @@ export default function AboutPage() {
               <div className="about-image relative aspect-[3/4] overflow-hidden border border-[#ccb17a]/30 bg-[#091c30]">
                 <Image
                   src="/images/maam-pic.jpeg"
-                  alt="Portrait of Synora Legacy’s Founder and CEO"
+                  alt={t("Portrait of Synora Legacy\u2019s Founder and CEO")}
                   fill
                   sizes="(max-width: 460px) calc(100vw - 40px), 420px"
                   className="object-cover"
@@ -44,17 +58,19 @@ export default function AboutPage() {
               <figcaption className="mt-6 border-l-2 border-[#ccb17a] pl-5">
                 {professional.name && (
                   <p className="mb-2 text-xl font-bold text-[#091c30]">
-                    {professional.name}
+                    {t(professional.name)}
                   </p>
                 )}
                 <p className="text-sm font-bold text-[#8b6c35]">
-                  {professional.leadershipTitle}
+                  {t(professional.leadershipTitle)}
                 </p>
-                <p className="mt-2 text-sm text-[#5b6771]">Synora Legacy</p>
+                <p className="mt-2 text-sm text-[#5b6771]">
+                  {t("Synora Legacy")}
+                </p>
               </figcaption>
             </figure>
-            <article aria-label="Our founder’s story" data-reveal>
-              <p className="eyebrow">A MESSAGE FROM OUR FOUNDER</p>
+            <article aria-label={t("Our founder\u2019s story")} data-reveal>
+              <p className="eyebrow">{t("A MESSAGE FROM OUR FOUNDER")}</p>
               <div className="space-y-6 text-[15px] leading-8 text-[#54616b] sm:text-base">
                 {founderStory.paragraphs.map((paragraph, index) => (
                   <p
@@ -65,7 +81,7 @@ export default function AboutPage() {
                         : undefined
                     }
                   >
-                    {paragraph}
+                    {t(paragraph)}
                   </p>
                 ))}
               </div>
@@ -74,8 +90,8 @@ export default function AboutPage() {
         </Section>
         <Section tone="cream">
           <SectionHeading
-            eyebrow="WHAT GUIDES US"
-            title="Rooted in care. Focused on tomorrow."
+            eyebrow={t("WHAT GUIDES US")}
+            title={t("Rooted in care. Focused on tomorrow.")}
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {philosophy.map(({ title, icon: Icon, description }) => (
@@ -85,9 +101,9 @@ export default function AboutPage() {
                   strokeWidth={1.3}
                   aria-hidden="true"
                 />
-                <h3 className="mt-5 font-heading text-3xl">{title}</h3>
+                <h3 className="mt-5 font-heading text-3xl">{t(title)}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#54616b]">
-                  {description}
+                  {t(description)}
                 </p>
               </div>
             ))}
@@ -95,18 +111,18 @@ export default function AboutPage() {
         </Section>
         <Section>
           <SectionHeading
-            eyebrow="HOW WE WORK"
-            title="A clear process, built around you."
+            eyebrow={t("HOW WE WORK")}
+            title={t("A clear process, built around you.")}
           />
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {approach.map((item) => (
               <div key={item.step}>
                 <span className="font-heading text-4xl text-[#967640]">
-                  {item.step}
+                  {t(item.step)}
                 </span>
-                <h3 className="mt-5 font-heading text-3xl">{item.title}</h3>
+                <h3 className="mt-5 font-heading text-3xl">{t(item.title)}</h3>
                 <p className="mt-3 text-sm leading-7 text-[#54616b]">
-                  {item.description}
+                  {t(item.description)}
                 </p>
               </div>
             ))}

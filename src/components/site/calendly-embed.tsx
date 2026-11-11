@@ -1,7 +1,9 @@
 "use client";
+import { useTranslation } from "@/lib/use-translation";
 import Script from "next/script";
 import { CalendarDays } from "lucide-react";
 export function CalendlyEmbed() {
+  const t = useTranslation();
   const url = process.env.NEXT_PUBLIC_CALENDLY_URL;
   const valid =
     url &&
@@ -25,7 +27,7 @@ export function CalendlyEmbed() {
             rel="noopener noreferrer"
             className="inline-link"
           >
-            Open booking calendar in a new tab
+            {t("Open booking calendar in a new tab")}
           </a>
         </>
       ) : (
@@ -36,10 +38,13 @@ export function CalendlyEmbed() {
             className="text-[#967640]"
             aria-hidden="true"
           />
-          <h3 className="mt-5 font-heading text-3xl">A time to connect.</h3>
+          <h3 className="mt-5 font-heading text-3xl">
+            {t("A time to connect.")}
+          </h3>
           <p className="mt-4 text-sm leading-8 text-[#54616b]">
-            Online scheduling will be available when Synora Legacy launches. For
-            now, you can explore the conversation form above.
+            {t(
+              "Online scheduling will be available when Synora Legacy launches. For now, you can explore the conversation form above.",
+            )}
           </p>
         </>
       )}

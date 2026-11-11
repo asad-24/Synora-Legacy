@@ -1,3 +1,5 @@
+import { localizedMetadata } from "@/lib/i18n/metadata";
+import { getTranslation } from "@/lib/i18n/server";
 import {
   ArrowUpRight,
   BookOpen,
@@ -11,29 +13,42 @@ import { Header } from "@/components/site/header";
 import { PageHero, Section, SiteShell } from "@/components/site/section";
 import { professional } from "@/data/professional";
 import { isContactConfigured } from "@/lib/contact-config";
-export const metadata = { title: "Start a Conversation" };
-export default function ContactPage() {
+const pageMetadata = { title: "Start a Conversation" };
+export async function generateMetadata() {
+  return localizedMetadata(
+    "/contact",
+    pageMetadata.title,
+    "description" in pageMetadata
+      ? String(pageMetadata.description)
+      : undefined,
+  );
+}
+export default async function ContactPage() {
+  const t = await getTranslation();
   return (
     <SiteShell>
       <Header />
       <main id="main-content" className="flex-1">
         <PageHero
-          eyebrow="Contact"
-          title="Schedule a thoughtful conversation."
-          text="Reach out with questions about protection, planning, education, careers, or where to begin."
+          eyebrow={t("Contact")}
+          title={t("Schedule a thoughtful conversation.")}
+          text={t(
+            "Reach out with questions about protection, planning, education, careers, or where to begin.",
+          )}
         />
         <Section>
           <div className="grid items-start gap-12 lg:grid-cols-[.85fr_1.15fr]">
             <div>
-              <p className="eyebrow">YOUR PRIORITIES COME FIRST</p>
+              <p className="eyebrow">{t("YOUR PRIORITIES COME FIRST")}</p>
               <h2 className="font-heading text-4xl">
-                A little clarity.
-                <br />A thoughtful next step.
+                {t("A little clarity.")}
+                <br />
+                {t("A thoughtful next step.")}
               </h2>
               <p className="mt-6 max-w-sm text-sm leading-8 text-[#54616b]">
-                Share your goals and the topics you’d like to understand. Please
-                keep your message general; you don’t need to send financial
-                account or medical details.
+                {t(
+                  "Share your goals and the topics you\u2019d like to understand. Please keep your message general; you don\u2019t need to send financial account or medical details.",
+                )}
               </p>
               <div className="my-8 grid gap-5">
                 {[
@@ -54,22 +69,22 @@ export default function ContactPage() {
                       className="text-[#967640]"
                       aria-hidden="true"
                     />
-                    {text}
+                    {t(text)}
                   </div>
                 ))}
               </div>
               <div className="border-t border-[#deded8] pt-6">
                 <p className="font-heading text-2xl">
-                  {professional.name || "Synora Legacy"}
+                  {t(professional.name || "Synora Legacy")}
                 </p>
                 {professional.approvedTitle && (
                   <p className="mt-2 text-sm text-[#8b6c33]">
-                    {professional.approvedTitle}
+                    {t(professional.approvedTitle)}
                   </p>
                 )}
                 {professional.licenseNumber && (
                   <p className="mt-2 text-sm">
-                    License / NPN: {professional.licenseNumber}
+                    {t("License / NPN:")} {professional.licenseNumber}
                   </p>
                 )}
                 {professional.email && (
@@ -77,7 +92,7 @@ export default function ContactPage() {
                     className="mt-4 flex items-center gap-2 text-sm"
                     href={`mailto:${professional.email}`}
                   >
-                    {professional.email}
+                    {t(professional.email)}
                     <ArrowUpRight size={16} />
                   </a>
                 )}
@@ -86,11 +101,11 @@ export default function ContactPage() {
                     className="mt-3 block text-sm"
                     href={`tel:${professional.phone.replace(/[^+0-9]/g, "")}`}
                   >
-                    {professional.phone}
+                    {t(professional.phone)}
                   </a>
                 )}
                 {professional.address && (
-                  <p className="mt-3 text-sm">{professional.address}</p>
+                  <p className="mt-3 text-sm">{t(professional.address)}</p>
                 )}
               </div>
             </div>
@@ -100,13 +115,14 @@ export default function ContactPage() {
         <Section id="schedule" tone="cream">
           <div className="grid gap-8 lg:grid-cols-[.85fr_1.15fr]">
             <div>
-              <p className="eyebrow">MAKE TIME FOR WHAT MATTERS</p>
+              <p className="eyebrow">{t("MAKE TIME FOR WHAT MATTERS")}</p>
               <h2 className="font-heading text-4xl">
-                Prefer to choose a time?
+                {t("Prefer to choose a time?")}
               </h2>
               <p className="mt-5 text-sm leading-8 text-[#54616b]">
-                A dedicated conversation gives your questions the attention they
-                deserve.
+                {t(
+                  "A dedicated conversation gives your questions the attention they deserve.",
+                )}
               </p>
             </div>
             <CalendlyEmbed />
